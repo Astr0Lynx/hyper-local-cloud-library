@@ -1,1 +1,8 @@
 .vscode
+
+# Environment variables - never commit secrets
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
