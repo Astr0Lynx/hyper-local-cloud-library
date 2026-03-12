@@ -67,7 +67,10 @@ const bookSchema = new mongoose.Schema({
 });
 
 // Indexes for search
-bookSchema.index({ title: 'text', author: 'text' });
+// language_override: 'textSearchLang' prevents MongoDB from treating the doc's
+// `language` field as a text-index language hint (which only accepts a small set
+// of MongoDB-supported languages and would reject values like "Hindi").
+bookSchema.index({ title: 'text', author: 'text' }, { language_override: 'textSearchLang' });
 bookSchema.index({ genre: 1 });
 bookSchema.index({ ageRating: 1 });
 
